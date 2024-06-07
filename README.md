@@ -1,1 +1,1 @@
-# planeDisease.io
+# plantDisease.io
