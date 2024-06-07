@@ -1,0 +1,77 @@
+/* styles.css */
+
+/* Atur font utama, layout, dan latar belakang */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to top, #00c853, #039be5); /* Gradasi hijau ke biru */
+}
+
+/* Container utama dengan latar belakang semi transparan dan shadow */
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparansi latar belakang untuk efek modern */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px; /* Lebar maksimum untuk responsif */
+    margin: 20px; /* Tambahkan margin untuk spasi */
+}
+
+/* Logo dengan batas ukuran dan margin */
+#logo {
+    max-width: 200px; /* Atur ukuran maksimum logo */
+    height: auto;
+    margin-bottom: 0; /* Tambahkan margin bawah untuk spasi */
+}
+
+/* Gambar yang diunggah dengan batas ukuran dan margin */
+#uploadedImage {
+    max-width: 100%;
+    max-height: 200px; /* Batasi tinggi maksimum */
+    height: auto;
+    display: none; /* Mulai dengan display none */
+    margin: 20px auto;
+    border: 2px solid #ddd; /* Tambahkan border untuk membatasi gambar */
+    border-radius: 5px; /* Sedikit rounding untuk kesan lembut */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Shadow kecil untuk kedalaman */
+}
+
+/* Input file dengan margin otomatis */
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Tombol dengan style dan efek hover */
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Tambahkan radius untuk kesan lebih modern */
+    transition: background-color 0.3s ease; /* Transisi untuk efek hover */
+}
+
+button:hover {
+    background-color: #218838; /* Warna lebih gelap saat hover */
+}
+
+/* Responsif pada layar kecil */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        width: 100%; /* Lebar penuh */
+    }
+}
