@@ -1,2 +1,2 @@
 # plantDisease.io
-Kunjungi web ini [plantscan](https://andrymldni.github.io/plantDisease/)
+Kunjungi web ini [Florascan](https://andrymldni.github.io/plantDisease/)
