@@ -4,11 +4,84 @@ document.getElementById('predictButton').addEventListener('click', predictDiseas
 
 let model; // Variabel untuk menyimpan model TensorFlow
 const diseaseData = [
-    { name: 'Bacterial' },
-    { name: 'Fungal' },
-    { name: 'Hama' },
-    { name: 'Healthy' },
-    { name: 'Virus' }
+    { 
+        name: 'Bacterial',
+        symptoms: [
+            "Bercak daun berwarna coklat, hitam, atau kuning dengan tepi tidak teratur.",
+            "Busuk pada akar, batang, atau buah.",
+            "Exudat bakteri berupa cairan kental atau lendir.",
+            "Kerdil dan pertumbuhan tidak normal.",
+            "Klorosis (daun menguning).",
+        ],
+        treatment: [
+            "Identifikasi Tanaman yang Terinfeksi.",
+            "Cabut dan Musnahkan Tanaman yang Terinfeksi.",
+            "Aplikasi Bakterisida.",
+            "Pemantauan dan Perawatan Lanjutan.",
+            "Pengelolaan Linkungan Tanaman."
+        ]
+    },
+    { 
+        name: 'Fungal',
+        symptoms: [
+            "Bercak daun berwarna coklat atau hitam.",
+            "Lapisan tepung putih pada daun (embun tepung).",
+            "Busuk pada akar, batang, atau buah.",
+            "Pertumbuhan jamur berbentuk bulu atau kapas.",
+            "Necrosis (jaringan mati).",
+        ],
+        treatment: [
+            "Aplikasi fungisida.",
+            "Rotasi tanaman.",
+            "Sanitasi alat pertanian.",
+            "Penggunaan varietas tahan jamur.",
+            "pengaturan Waktu dan Jarak Tanam."
+        ]
+    },
+    { 
+        name: 'Hama',
+        symptoms: [
+            "Gigitan atau lubang pada daun dan buah.",
+            "Daun menguning atau rontok.",
+            "Kerusakan pada akar.",
+            "Daun menggulung atau melengkung.",
+            "Adanya eksudat madu dan jamur jelaga.",
+        ],
+        treatment: [
+            "Pengendalian secara mekanis.",
+            "Pengendalian biologis dengan musuh alami.",
+            "Aplikasi insektisida.",
+            "Sanitasi kebun.",
+            "Penggunaan Varietas Tahan dan Seed Treatment."
+        ]
+    },
+    { 
+        name: 'Healthy',
+        symptoms: ["Tanaman tampak sehat tanpa gejala penyakit atau hama."],
+        treatment: [
+            "Pemupukan dan penyiraman yang cukup.",
+            "Perawatan rutin dan pemantauan secara berkala untuk mencegah serangan penyakit atau hama.",
+            "Rotasi tanaman untuk mencegah penumpukan patogen di dalam tanah."
+        ]
+    },
+    { 
+        name: 'Virus',
+        symptoms: [
+            "Mosaik dan mottle pada daun.",
+            "Klorosis (daun menguning).",
+            "Distorsi daun.",
+            "Stunting (kererdilan).",
+            "Bintik nekrotik.",
+        ],
+        treatment: [
+            "Penggunaan bibit sehat.",
+            "Pengendalian vektor penular.",
+            "Pemusnahan tanaman yang terinfeksi.",
+            "Rotasi tanaman.",
+            "Pengelolaan Tanaman yang Terinfeksi."
+
+        ]
+    }
 ];
 
 // Memuat model TensorFlow
@@ -37,6 +110,34 @@ function handleImageUpload(event) {
     } else {
         img.src = '';
         img.style.display = 'none'; // Sembunyikan gambar jika tidak ada file
+    }
+}
+
+// Menampilkan pop-up dengan ciri-ciri dan penanganan
+function showPopup(disease) {
+    let symptomsList = disease.symptoms.map(symptom => `<li>${symptom}</li>`).join('');
+    let treatmentList = disease.treatment.map(treat => `<li>${treat}</li>`).join('');
+    let popupContent = `
+        <div class="popup-content">
+            <h2>${disease.name} Disease</h2>
+            <h3>Symptoms:</h3>
+            <ul>${symptomsList}</ul>
+            <h3>Treatment:</h3>
+            <ul>${treatmentList}</ul>
+            <button class="close-button" onclick="closePopup()">Close</button>
+        </div>
+    `;
+    let popup = document.createElement('div');
+    popup.id = 'popup';
+    popup.innerHTML = popupContent;
+    document.body.appendChild(popup);
+}
+
+// Menutup pop-up
+function closePopup() {
+    let popup = document.getElementById('popup');
+    if (popup) {
+        popup.remove();
     }
 }
 
@@ -70,7 +171,7 @@ async function predictDisease() {
         const highestIndex = Array.from(predictions).indexOf(Math.max(...predictions));
 
         const disease = diseaseData[highestIndex]; // Mengambil nama penyakit berdasarkan indeks prediksi
-        document.getElementById('result').innerHTML = `Predicted: ${disease.name}`;
+        showPopup(disease); // Tampilkan pop-up setelah prediksi
     } catch (error) {
         console.error('Prediction error:', error);
         alert('Failed to predict disease.');

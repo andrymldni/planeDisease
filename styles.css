@@ -68,6 +68,46 @@ button:hover {
     background-color: #218838; /* Warna lebih gelap saat hover */
 }
 
+/* Pop-up styling */
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+}
+
+.popup-content h2 {
+    margin-top: 0;
+}
+
+.popup-content ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.close-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #c9302c;
+}
+
 /* Responsif pada layar kecil */
 @media (max-width: 600px) {
     .container {
