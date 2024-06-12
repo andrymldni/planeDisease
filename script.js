@@ -120,7 +120,7 @@ function showPopup(disease) {
     let popupContent = `
         <div class="popup-content">
             <h2>${disease.name} Disease</h2>
-            <h3>Symptoms:</h3>
+            <h3>Ciri-ciri:</h3>
             <ul>${symptomsList}</ul>
             <h3>Treatment:</h3>
             <ul>${treatmentList}</ul>
