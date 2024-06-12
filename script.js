@@ -57,7 +57,11 @@ const diseaseData = [
     },
     { 
         name: 'Healthy',
-        symptoms: ["Tanaman tampak sehat tanpa gejala penyakit atau hama."],
+        symptoms: [
+            "Tanaman tampak sehat tanpa gejala penyakit atau hama.",
+            "Daun berwarna hijau dan tidak ada bercak atau kerusakan.",
+            "Tanaman tumbuh dengan baik dan berbuah dengan baik.", 
+        ],
         treatment: [
             "Pemupukan dan penyiraman yang cukup.",
             "Perawatan rutin dan pemantauan secara berkala untuk mencegah serangan penyakit atau hama.",
